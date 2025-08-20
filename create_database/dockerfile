@@ -1,0 +1,8 @@
+# Start from official Postgres image
+FROM postgres:15
+
+# Optional: copy init scripts into the container
+# These will run on first startup to initialize DB schema/data
+docker rm -f weshai_postgres 2>/dev/null
+
+COPY init.sql /docker-entrypoint-initdb.d/
