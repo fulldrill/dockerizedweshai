@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: weshai_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: weshaiadmin          # superuser
+      POSTGRES_PASSWORD: supersecret      # superuser password
+      POSTGRES_DB: WESHAI                 # default DB
+    ports:
+      - "5432:5432"
+    volumes:
+      - weshai_data:/var/lib/postgresql/data
+
+volumes:
+  weshai_data:
